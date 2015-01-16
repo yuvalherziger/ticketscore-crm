@@ -1,0 +1,17 @@
+<h1>Edit post</h1>
+
+<%= form_for @user do |form|%>
+
+  <p>
+    <%= form.label :userName %>
+    <%= form.text_field :userName %>
+  </p>
+  <p>
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </p>
+  <p>
+    <%= form.submit "Update User" %>
+  </p>
+<% end %>
+  	

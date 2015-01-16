@@ -1,0 +1,5 @@
+<h1>Show individual user: ID # <%= @user.id%></h1>
+
+The user is:
+<%= @user.userName%>:<%= @user.email%>
+
