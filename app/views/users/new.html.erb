@@ -1,6 +1,17 @@
 <h1>Add a new user</h1>
 
 <%= form_for @user do |form| %>
+    <% if @user.errors.any? %>
+        <div class="alert alert-danger alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          Please review the below errors:
+          <ul>
+            <% for message in @user.errors.full_messages %>
+            <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
   <p>
     <%= form.label :userName %>
     <%= form.text_field :userName %>
@@ -9,6 +20,14 @@
     <%= form.label :email %>
     <%= form.text_field :email %>
   </p>
+    <p>
+      <%= form.label :password %>
+      <%= form.password_field :password %>
+    </p>
+    <p>
+      <%= form.label :password_confirmation %>
+      <%= form.password_field :password_confirmation %>
+    </p>
   <p>
     <%= form.submit "Save User" %>
   </p>
