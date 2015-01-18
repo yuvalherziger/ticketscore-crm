@@ -11,15 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150116143107) do
+ActiveRecord::Schema.define(version: 20150118185556) do
+
+  create_table "roles", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.boolean  "isActive",   limit: 1
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "sessions", force: :cascade do |t|
+    t.string   "email",      limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "users", force: :cascade do |t|
-    t.string   "userName",   limit: 255
-    t.string   "email",      limit: 255
-    t.binary   "password",   limit: 65535
-    t.boolean  "isActive",   limit: 1
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.string   "userName",      limit: 255
+    t.string   "email",         limit: 255
+    t.boolean  "isActive",      limit: 1
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.string   "password_hash", limit: 255
+    t.string   "password_salt", limit: 255
   end
 
 end
