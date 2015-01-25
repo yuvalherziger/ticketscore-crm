@@ -1,10 +1,44 @@
-<h1>Show all users</h1>
-<ul>
-<% @users.each do |user|%>
-<li><%= link_to user.userName, user %> : <%= user.email %> (<%= link_to 'Edit', edit_user_path(user)%>)</li>
+<h2 class="page-header">System Users</h2>
+
+<div id="search-user-wrapper">
+  <label for="search-field">Search:</label>
+  <input type="text" id="search-field" class="input input-sm" />
+
+</div>
+<br/>
+<table class="table table-bordered table-hover table-responsive table-striped header-table">
+
+  <thead>
+  <tr>
+    <th>Email</th>
+    <th>User Name</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+
+  <% @users.each do |user|%>
+  <tr>
+    <td>
+      <%= user.email %>
+    </td>
+    <td>
+      <%= user.userName %>
+    </td>
+    <td>
+      <%= link_to edit_user_path(user), class: "btn btn-primary btn-xs" do%>
+      <i class='glyphicon glyphicon-edit'></i> edit
+      <%end%>
+      <%= link_to user, data: { confirm: 'Are you sure?' }, :method => :delete, class: "btn btn-danger btn-xs" do%>
+          <i class="glyphicon glyphicon-remove-circle"></i> remove
+      <% end %>
+    </td>
+  </tr>
+  <% end %>
+
+  </tbody>
+</table>
+<%= link_to new_user_path, class: "btn btn-success btn-xs" do%>
+    <i class="glyphicon glyphicon-plus"></i> add a user
 <% end %>
-<ul>
-
-<p><%= link_to 'Add a user', new_user_path %></p>
-
 

@@ -40,6 +40,9 @@ class UsersController < ApplicationController
 	
   end
   def destroy
-
+    @user = User.find(params[:id])
+    messageString = 'success: User ' + @user.email + ' deleted successfully'
+    @user.destroy
+    redirect_to users_path, :notice => messageString
   end
 end
