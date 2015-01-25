@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   belongs_to :person
+  has_one :role
   attr_accessor :password
   before_save :encrypt_password
 
@@ -30,7 +31,7 @@ class User < ActiveRecord::Base
   end
 
   # authentication type II - username and password
-  def self.authenticateByUser(userName, password)
+  def self.authenticateByUsername(userName, password)
     user = find_by_email(userName)
 
     if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)
